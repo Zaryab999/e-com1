@@ -1,11 +1,24 @@
 body{
-    background-color: #909b8f;
+     
+	
+	background-image: url(src/assets/bgimageforlogin.jpg);
+	background-repeat: no-repeat;
+	background-size: 15in 10in;
+	height: 100vh!important; 
+	
 } 
 .centered-form{
 	margin-top: 250px;
+	width: 58vh;
+	height: 35vh;
+	margin-left: auto;
 }
 
 .centered-form .panel{
 	background: rgba(255, 255, 255, 0.8);
 	box-shadow: rgba(0, 0, 0, 0.3) 20px 20px 20px;
+}
+
+.abc{
+	height:100vh!important;
 }
