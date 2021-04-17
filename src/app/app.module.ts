@@ -10,7 +10,8 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
 import { OrderComponent } from './order/order.component';
 import { AdminScreenComponent } from './admin-screen/admin-screen.component';
 import { HeaderComponent } from './header/header.component';
-
+import { FormsModule } from '@angular/forms';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +25,9 @@ import { HeaderComponent } from './header/header.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
