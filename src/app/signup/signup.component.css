@@ -1,7 +1,7 @@
 body{
      
 	
-	background-image: url(src/assets/bgimageforlogin.jpg);
+	background-image: url('src/assets/bgimageforlogin.jpg');
 	background-repeat: no-repeat;
 	background-size: 15in 10in;
 	height: 100vh!important; 

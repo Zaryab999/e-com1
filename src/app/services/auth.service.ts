@@ -9,11 +9,17 @@ export class AuthService {
   constructor(private http:HttpClient) { }
   login(Email :string,Password:string){
     return this.http.post<any>('/api/users/login',{Email,Password}).pipe(
-      map((token)=>{
-        localStorage.setItem('login-token',token.access_token)
+      map((data)=>{
+        localStorage.setItem('login-token',data.access_token)
+        return data;
       }
       )
 
     )
   }
+
+  // findOnebyemail(Email : String){
+  //   return this.http.get<any>('/api/users/email',Email);
+  // }
+
 }

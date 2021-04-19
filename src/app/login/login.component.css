@@ -3,7 +3,7 @@
 @import url('https://fonts.googleapis.com/css?family=Numans');
 
 html,body{
-background-image: url(src/assets/bgimageforlogin.jpg);
+background-image:url('src/assets/bgimageforlogin.jpg'); 
 background-size:cover;
 background-repeat: no-repeat;
 height: 100vh;
@@ -21,7 +21,7 @@ margin-bottom: auto ;
 
 .card{
 height: 370px;
-margin-top: 250px;
+margin-top: 180px;
 width: 400px;
 background-color: rgba(0,0,0,0.5) !important;
 }
