@@ -11,9 +11,9 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  userName = "";
- onLogin(user: string) {
- this.userName =user;
- alert(this.userName)
- }
+ // userName = "";
+ //onLogin(user: string) {
+ //this.userName =user;
+ ///alert(this.userName)
+ 
 }

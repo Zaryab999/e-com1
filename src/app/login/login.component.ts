@@ -1,4 +1,11 @@
-/*import { Injectable } from '@angular/core';
+
+import { Subscription } from 'rxjs';
+
+import {OnDestroy } from '@angular/core';
+
+
+
+import { Injectable } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
@@ -18,9 +25,11 @@ import { EventEmitter, Output } from '@angular/core';
   providers:[AuthService,StateService]
   
 })
-export  class LoginComponent implements OnInit {
+export  class LoginComponent implements OnInit, OnDestroy {
   userName: string = '';
- @Output() login = new EventEmitter<string>();
+ 
+  message:any
+  subscription: Subscription = new Subscription;
 
   email: any = '';
   name:any=''
@@ -33,23 +42,31 @@ export  class LoginComponent implements OnInit {
   constructor( private router: Router, private authservice: AuthService) { }
   
   
-  // subject = new BehaviorSubject(123);
+  //subject = new BehaviorSubject(123);
   
   ngOnInit(): void {
-    // this.getDetails();
-    //this.setsubject(this.name);
-    // this.stateservice.setdata(this.name,this.email)
-    //console.log("name---", this.name)
-    //this.stateservice.update(this.name)
-    //this.stateservice.subject.next(this.name)
-    //const abc =this.stateservice.subject.getValue()
-    //console.log(abc)
+    //this.subscription = this.authservice.currentMessage;
+    this.newMessage()
+    /*this.getDetails();
+    this.setsubject(this.name);
+    this.stateservice.setdata(this.name,this.email)
+    console.log("name---", this.name)
+    this.stateservice.update(this.name)
+    this.stateservice.subject.next(this.name)
+    const abc =this.stateservice.subject.getValue()
+    console.log(abc)*/
   }
   
-  
-  public returnsubject(){
-    //return this.subject.asObservable();
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
+  newMessage() {
+    this.authservice.changeMessage("Hello from Sibling")
+  }
+
+  // public returnsubject(){
+  //   return this.subject.asObservable();
+  // }
   
   
   
@@ -61,12 +78,12 @@ export  class LoginComponent implements OnInit {
   ToHome(){
     this.router.navigateByUrl('/home')
   }
-  // onClickSubmit(data:any){
-  //   console.log(data);
+  onClickSubmit(data:any){
+    console.log(data);
     
-  //   alert("Entered Email id : " + data.Email);
-  //   alert("Entered Password : " + data.Password);
-  // }
+    alert("Entered Email id : " + data.Email);
+    alert("Entered Password : " + data.Password);
+  }
 
   handleEmail(email: any){
     this.email = email.target.value;
@@ -78,15 +95,19 @@ export  class LoginComponent implements OnInit {
   async handleLogin( ){
     this.authservice.login(this.email,this.password).subscribe(async (res: any) => {
       
-      //console.log(res);
-      // this.customerId = data.ID;
-      // console.log(this.customerId);
+      console.log(res);
+     // this.customerId = data.ID;
+     // console.log(this.customerId);
       
     this.email=res.Email;
     this.name=res.Name;
-    //console.log(this.name)
-     //this.authservice.updatesubject(this.name)
-     alert(`Welcome ${this.name}`)
+    //console.log('login result',res.Name)
+    //console.log(`${this.name} in login`)
+
+      //this.authservice.subject.next(res.Name);
+    //this.authservice.setdata(this.name)
+    
+    alert(`Welcome ${this.name}`)
      this.ToHome();
     },(err: any)=>{
       alert('invali Email or Password')
@@ -95,24 +116,23 @@ export  class LoginComponent implements OnInit {
 
     //this.stateservice.setdata(this.name,this.email);
     
-    // alert("OK");
+    alert("OK");
     
        
 
   }
- 
-  
-
-  // getDetails()
-  // {
-  //   this.authservice.findOnebyemail(this.email).subscribe((res : any) => {
-  //     console.log(res);
-  //     this.userDetails = res;
-  //   })
-  // }
 }
-*/
+ /* 
 
+  getDetails()
+  {
+    this.authservice.findOnebyemail(this.email).subscribe((res : any) => {
+      console.log(res);
+      this.userDetails = res;
+    })
+  }
+}*/
+/*
 import { Component, EventEmitter, Output,OnInit } from '@angular/core';
 
 @Component({
@@ -139,3 +159,7 @@ export class LoginComponent implements OnInit {
  }
 
 }
+
+
+*/
+

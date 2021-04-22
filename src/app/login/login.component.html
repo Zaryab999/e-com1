@@ -1,7 +1,6 @@
-<!-- 
 <!DOCTYPE html>
 <html>
-	<app-header></app-header>
+	
 <head>
 	
 	
@@ -9,11 +8,11 @@
    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 
 	
-    <!-- Fontawesome CDN-->
-	<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">  -->
+    <!-- Fontawesome CDN -->
+	 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">  
 
 	<!--Custom styles-->
-	<!--<link rel="stylesheet" type="text/css" href="login.component.css">
+	<link rel="stylesheet" type="text/css" href="login.component.css">
 </head>
 <body class="my-box">
 <div class="container">
@@ -62,26 +61,6 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 
 </body>
-</html> -->
+</html> 
 
 
-<h1>
- <span style="color: red;font-size:larger">
- I am Login Component behaving as a child for the @output and Event emitter :)
- </span>
- 
- </h1>
- <div class="container">
- <form>
- <div class="form-group">
- <label for="userName">User Name</label>
- <input type="text" name="userName" (change)="handleusername($event)" class="form-control" id="userName" required>
- <!-- <input type="text" name="userName" #ctrl="ngModel" required> -->
- </div>
- <div class="form-group">
- <label for="Password">Password</label>
- <input type="password" class="form-control" id="Password">
- </div>
- <button (click)="submit()">Login</button>
- </form>
-</div>
