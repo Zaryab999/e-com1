@@ -54,11 +54,11 @@ export class AuthService  {
 
   public messageSource = new BehaviorSubject<string>('default message');
   public currentMessage = this.messageSource.getValue();
-  
+
   constructor(private http:HttpClient) { }
   name:string=''
   data:any
-  login(Email :string,Password:string){
+    login(Email :string,Password:string){
     // this.messageSource.subscribe((data) => {
     //   console.log(data)});
     return this.http.post<any>('/api/users/login',{Email,Password}).pipe(
@@ -67,15 +67,34 @@ export class AuthService  {
             return data;
           }
           )
-    
+
         )
-        
+
+      }
+      signup(Name:string,Password:string,Email:string){
+        //console.log("inauth")
+      return this.http.post<any>('/api/users/register',{Name,Password,Email}).pipe(
+        map((data)=>{
+          return data;
+        }
+        )
+      )
+
       }
   changeMessage(message: string) {
     this.messageSource.next(message)
    //console.log(this.messageSource.value);
-    
+
   }
+  setdata(name:string){
+        this.name=name
+        console.log(`${this.name} in auth`)
+      }
+      getdata():string{
+             //console.log(this.name)
+             //console.log(this.name)
+            return  this.name
+        }
   getmessage(){
     return this.messageSource.value
   }

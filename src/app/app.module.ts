@@ -14,7 +14,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatToolbarModule} from '@angular/material/toolbar';
- 
+
 
 @NgModule({
   declarations: [
@@ -25,7 +25,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     ProductDetailsComponent,
     OrderComponent,
     AdminScreenComponent,
-    HeaderComponent
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,

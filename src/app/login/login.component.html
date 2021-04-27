@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html>
-	
+	<app-header [childMessage]="parentMessage"></app-header>
 <head>
-	
-	
-   
+
+
+
    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 
-	
+
     <!-- Fontawesome CDN -->
-	 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">  
+	 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
 	<!--Custom styles-->
 	<link rel="stylesheet" type="text/css" href="login.component.css">
@@ -20,7 +20,7 @@
 		<div class="card">
 			<div class="card-header">
 				<h3>Sign In</h3>
-				 
+
 			</div>
 			<div class="card-body">
 				<form >
@@ -29,7 +29,7 @@
 							<span class="input-group-text"><i class="fas fa-user"></i></span>
 						</div>
 						<input type="text" (change)="handleEmail($event)" name="Email" class="form-control" placeholder="username">
-						
+
 					</div>
 					<div class="input-group form-group">
 						<div class="input-group-prepend">
@@ -46,7 +46,7 @@
 				</form>
 			</div>
 			<div class="card-footer">
-				<div class="d-flex justify-content-center links">
+				<div class="d-flex justify-content-center links" >
 					Don't have an account? <a (click)=signUp()>Sign Up</a>
 				</div>
 				<div class="d-flex justify-content-center">
@@ -61,6 +61,6 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 
 </body>
-</html> 
+</html>
 
 
