@@ -14,6 +14,9 @@ import { FormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
+import { VerificationComponent } from './verification/verification.component';
+import { ChangepasswordComponent } from './changepassword/changepassword.component';
 
 
 @NgModule({
@@ -26,6 +29,9 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     OrderComponent,
     AdminScreenComponent,
     HeaderComponent,
+    ForgotpasswordComponent,
+    VerificationComponent,
+    ChangepasswordComponent,
   ],
   imports: [
     BrowserModule,

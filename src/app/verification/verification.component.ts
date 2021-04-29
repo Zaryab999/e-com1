@@ -35,13 +35,13 @@ export class VerificationComponent implements OnInit
     this.ID=id
     console.log(id)
     this.authserice.verify(this.vtoken,this.ID).subscribe(async (res: any) => {
-    this.authserice.up_ver_st(id);
+    // this.authserice.up_ver_st(id,this.vtoken);
     alert(`USer ${res.Name} verified\n You can login Now`);
     this.ToLogin();
     },
     (err: any)=>
     {
-      alert('Failed to verify')
+      alert('Failed to verify or already verified')
       console.log('err',err)
     });
 

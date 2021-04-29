@@ -2,6 +2,18 @@
 <html>
 	<app-header [childMessage]="parentMessage"></app-header>
 <head>
+  <style>
+.anc1{
+  text-decoration-line: underline;
+  cursor: pointer;
+  color: cornflowerblue!important;
+}
+
+.anc1:hover{
+  text-decoration-line: underline!important;
+  color: aliceblue!important;
+}
+  </style>
 
 
 
@@ -47,10 +59,10 @@
 			</div>
 			<div class="card-footer">
 				<div class="d-flex justify-content-center links" >
-					Don't have an account? <a (click)=signUp()>Sign Up</a>
+					Don't have an account? <a class="anc1" (click)=signUp()>Sign Up</a>
 				</div>
 				<div class="d-flex justify-content-center">
-					<a href="#">Forgot your password?</a>
+					<a class="anc1"(click)=forgot()>Forgot your password?</a>
 				</div>
 			</div>
 		</div>

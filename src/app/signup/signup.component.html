@@ -8,23 +8,23 @@
         <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
         	<div class="panel panel-default centered-form">
         		<div class="panel-heading">
-			    		<h3 class="panel-title">Sign UP  </h3>
+			    		<h3 class="panel-title" style="font-weight: 1000;">Sign UP  </h3>
 			 			</div>
 			 			<div class="panel-body" style="height: auto;">
 			    		<form role="form">
 			    			<div class="row">
 			    				<div class="col-xs-6 col-sm-6 col-md-12">
 			    					<div class="form-group">
-			                <input type="text" name="name" id="name" class="form-control input-sm" placeholder="User Name" style="margin-top: 30px;">
+			                <input type="text" (change)="handleName($event)"name="Name" id="name" class="form-control input-sm" placeholder="User Name" style="margin-top: 30px;" >
 			    					</div>
 			    				</div>
-			    				 
+
 			    			</div>
 
 			    			<div  class="row">
 			    				<div class="col-xs-6 col-sm-6 col-md-12">
 			    					<div class="form-group">
-			    						<input type="email" name="email" id="email" class="form-control input-sm" placeholder="Email">
+			    						<input type="email"(change)="handleEmail($event)" name="Email" id="email" class="form-control input-sm" placeholder="Email" >
 			    					</div>
 			    				</div>
 			    			</div>
@@ -32,14 +32,16 @@
 			    			<div class="row">
 			    				<div class="col-xs-6 col-sm-6 col-md-12">
 			    					<div class="form-group">
-			    						<input type="password" name="password" id="password" class="form-control input-sm" placeholder="Password">
+			    						<input type="password"(change)="handlePassword($event)" name="Password"  id="password" class="form-control input-sm" placeholder="Password" >
 			    					</div>
 			    				</div>
-			    				 
+
 			    			</div>
-			    			
-			    			<input type="submit" value="Register" class="btn btn-info btn-block" style="margin-top: 20px;"> 
-			    		
+
+			    			<div class="form-group">
+                  <input type="submit" (click)="handleSignup()" value="Register" style="display: flex;justify-content: center; width: 100%;" class="btn login_btn">
+                </div>
+
 			    		</form>
 			    	</div>
 	    		</div>

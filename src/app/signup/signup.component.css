@@ -1,12 +1,12 @@
 body{
-     
-	
+
+
 	background-image: url('src/assets/bgimageforlogin.jpg');
 	background-repeat: no-repeat;
 	background-size: 15in 10in;
-	height: 100vh!important; 
-	
-} 
+	height: 100vh!important;
+
+}
 .centered-form{
 	margin-top: 250px;
 	width: 58vh;
@@ -22,3 +22,13 @@ body{
 .abc{
 	height:100vh!important;
 }
+.login_btn{
+  color: black;
+  background-color:rgb(133, 206, 219);
+  width: 100px;
+  }
+
+  .login_btn:hover{
+  color: black;
+  background-color: white;
+  }

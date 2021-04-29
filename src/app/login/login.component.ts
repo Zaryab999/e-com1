@@ -20,33 +20,34 @@ import { EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-login',
+
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
-  providers:[AuthService,StateService]
-  
+  providers:[AuthService]
+
 })
 export  class LoginComponent implements OnInit, OnDestroy {
   userName: string = '';
- 
-  message:any
-  subscription: Subscription = new Subscription;
 
+  parentMessage:string='Guest'
+  //subscription: Subscription = new Subscription;
+  //@Output() messageEvent = new EventEmitter<string>();
   email: any = '';
   name:any=''
   password: any = '';
-  
+
   userId: any;
 
   //public subject = new BehaviorSubject('abc');
 
   constructor( private router: Router, private authservice: AuthService) { }
-  
-  
+
+
   //subject = new BehaviorSubject(123);
-  
+
   ngOnInit(): void {
     //this.subscription = this.authservice.currentMessage;
-    this.newMessage()
+    //this.newMessage()
     /*this.getDetails();
     this.setsubject(this.name);
     this.stateservice.setdata(this.name,this.email)
@@ -56,9 +57,9 @@ export  class LoginComponent implements OnInit, OnDestroy {
     const abc =this.stateservice.subject.getValue()
     console.log(abc)*/
   }
-  
+
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    //this.subscription.unsubscribe();
   }
   newMessage() {
     this.authservice.changeMessage("Hello from Sibling")
@@ -67,11 +68,12 @@ export  class LoginComponent implements OnInit, OnDestroy {
   // public returnsubject(){
   //   return this.subject.asObservable();
   // }
-  
-  
-  
-  
-  
+
+  forgot(){
+    this.router.navigateByUrl('/forgot')
+  }
+
+
   signUp(){
     this.router.navigateByUrl('/sign-up')
   }
@@ -80,49 +82,50 @@ export  class LoginComponent implements OnInit, OnDestroy {
   }
   onClickSubmit(data:any){
     console.log(data);
-    
+
     alert("Entered Email id : " + data.Email);
     alert("Entered Password : " + data.Password);
   }
 
   handleEmail(email: any){
     this.email = email.target.value;
-    
+
   }
   handlePassword(password: any){
     this.password = password.target.value;
   }
   async handleLogin( ){
     this.authservice.login(this.email,this.password).subscribe(async (res: any) => {
-      
-      console.log(res);
+
+      //console.log(res);
      // this.customerId = data.ID;
      // console.log(this.customerId);
-      
+
     this.email=res.Email;
     this.name=res.Name;
+    console.log(res.access_token);
     //console.log('login result',res.Name)
     //console.log(`${this.name} in login`)
 
       //this.authservice.subject.next(res.Name);
     //this.authservice.setdata(this.name)
-    
+    //this.parentMessage = this.name
     alert(`Welcome ${this.name}`)
-     this.ToHome();
+    this.ToHome();
     },(err: any)=>{
       alert('invali Email or Password')
       console.log('err',err)
     });
 
     //this.stateservice.setdata(this.name,this.email);
-    
-    alert("OK");
-    
-       
+
+    //alert("OK");
+
+
 
   }
 }
- /* 
+ /*
 
   getDetails()
   {

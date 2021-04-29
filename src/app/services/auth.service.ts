@@ -95,10 +95,16 @@ export class AuthService  {
           )
         )
       }
-
-      up_ver_st(ID:number){
-           this.http.get<any>('/api/users/up_ver_st/ `${id}` ')
+      changepass(Email:string){
+        console.log("in change pass")
+          return this.http.post<any>('/api/users/changepass',{Email})
       }
+
+      // up_ver_st(ID:number,vtoken:string) {
+      //   console.log("in front end up_vr")
+
+      //   return this.http.post<any>('/api/users/up_ver_st',{ID,vtoken});
+      // }
 
       getcode(){
         return this.code
