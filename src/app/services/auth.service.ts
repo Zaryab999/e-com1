@@ -45,7 +45,7 @@
 // }
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import {HttpClient} from'@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams} from'@angular/common/http';
 import {map} from 'rxjs/operators'
 @Injectable({
      providedIn: 'root'
@@ -58,6 +58,7 @@ export class AuthService  {
   constructor(private http:HttpClient) { }
   name:string=''
   data:any
+  code:any
     login(Email :string,Password:string){
     // this.messageSource.subscribe((data) => {
     //   console.log(data)});
@@ -81,6 +82,29 @@ export class AuthService  {
       )
 
       }
+      verify(vtoken:string,ID:number){
+        // let httpheader = new HttpHeaders();
+        // let parameters= new HttpParams();
+
+        // parameters=parameters.append("ID",ID);
+        // parameters=parameters.append("vtoken",vtoken);
+        return this.http.post<any>('/api/users/verify',{ID,vtoken}).pipe(
+          map((data)=>{
+            return data;
+          }
+          )
+        )
+      }
+
+      up_ver_st(ID:number){
+           this.http.get<any>('/api/users/up_ver_st/ `${id}` ')
+      }
+
+      getcode(){
+        return this.code
+      }
+
+
   changeMessage(message: string) {
     this.messageSource.next(message)
    //console.log(this.messageSource.value);
