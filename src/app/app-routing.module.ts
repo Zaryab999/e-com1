@@ -7,6 +7,7 @@ import { HeaderComponent } from './header/header.component';
 import { HomeComponent} from './home/home.component';
 import  {ForgotpasswordComponent} from './forgotpassword/forgotpassword.component'
 import{VerificationComponent} from './verification/verification.component'
+import{ChangepasswordComponent} from'src/app/changepassword/changepassword.component'
 const routes: Routes = [
   { path: '', component: LoginComponent},
   { path: 'sign-up', component: SignupComponent},
@@ -15,7 +16,7 @@ const routes: Routes = [
   {path:'header',component:HeaderComponent},
   {path:'forgot',component:ForgotpasswordComponent},
   {path:'verify/:token/:id',component:VerificationComponent},
-  {path:'changepass/:token/:id',component:VerificationComponent},
+  {path:'changepass/:token/:id',component:ChangepasswordComponent},
 ];
 
 @NgModule({

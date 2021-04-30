@@ -95,9 +95,26 @@ export class AuthService  {
           )
         )
       }
-      changepass(Email:string){
+      changepassreq(Email:string){
+        console.log(Email)
+          return this.http.post<any>('/api/users/changepassreq',{Email}).pipe(
+            map((data)=>{
+              return data;
+            }
+            )
+          )
+      }
+      up_changepass(Password:any,vtoken:any){
         console.log("in change pass")
-          return this.http.post<any>('/api/users/changepass',{Email})
+        console.log(Password)
+        console.log(vtoken)
+          return this.http.post<any>('/api/users/changepass',{Password,vtoken}).pipe(
+            map((data)=>{
+              return data;
+            }
+            )
+          )
+
       }
 
       // up_ver_st(ID:number,vtoken:string) {

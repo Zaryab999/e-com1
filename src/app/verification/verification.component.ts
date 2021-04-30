@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import {AuthService} from 'src/app/services/auth.service'
+import {AuthService} from 'src/app/services/auth.service';
 @Component({
   selector: 'app-verification',
   templateUrl: './verification.component.html',
@@ -41,7 +41,7 @@ export class VerificationComponent implements OnInit
     },
     (err: any)=>
     {
-      alert('Failed to verify or already verified')
+      alert('Invalid link or already verified')
       console.log('err',err)
     });
 
