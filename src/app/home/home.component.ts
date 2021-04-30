@@ -5,15 +5,16 @@
 import { Subscription } from 'rxjs';
 import {OnDestroy } from '@angular/core';
 import {HeaderComponent} from 'src/app/header/header.component'
+import { ProductService } from '../services/product.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
-  providers:[AuthService]
+  providers:[ProductService]
 })
 export class HomeComponent implements OnInit {
   name:any='';
-  constructor(  private authservice: AuthService) { }
+  constructor(  private productservice: ProductService) { }
   message:string='';
   //subscription: Subscription = new Subscription;
 
@@ -33,8 +34,18 @@ export class HomeComponent implements OnInit {
     //console.log(this.authservice.currentMessage)
     // const a=this.authservice.messageSource.value
     // console.log(a)
-
+    this.productservice.getallproducts().subscribe(async(data:any)=>
+    {
+      var c= data.length;
+      console.log(data)
+    },(err: any)=>{
+    alert('Error Occured')
+    console.log('err',err);
     }
+    )
+
+  }
+
 
   }/*
     ngOnDestroy() {
