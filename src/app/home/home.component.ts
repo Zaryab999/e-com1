@@ -6,6 +6,7 @@ import { Subscription } from 'rxjs';
 import {OnDestroy } from '@angular/core';
 import {HeaderComponent} from 'src/app/header/header.component'
 import { ProductService } from '../services/product.service';
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -14,8 +15,10 @@ import { ProductService } from '../services/product.service';
 })
 export class HomeComponent implements OnInit {
   name:any='';
-  constructor(  private productservice: ProductService) { }
+  constructor(  private productservice: ProductService,private router:Router,) { }
   message:string='';
+  image:string='';
+  data:any=[];
   //subscription: Subscription = new Subscription;
 
   ngOnInit(): void {
@@ -34,10 +37,15 @@ export class HomeComponent implements OnInit {
     //console.log(this.authservice.currentMessage)
     // const a=this.authservice.messageSource.value
     // console.log(a)
-    this.productservice.getallproducts().subscribe(async(data:any)=>
+
+    this.productservice.getallproducts().subscribe(async(res:any)=>
     {
-      var c= data.length;
-      console.log(data)
+      this.data=res
+      var c= res.length;
+      console.log(this.data)
+      //console.log(this.data)
+
+     // this.image=data.Image
     },(err: any)=>{
     alert('Error Occured')
     console.log('err',err);
@@ -45,6 +53,18 @@ export class HomeComponent implements OnInit {
     )
 
   }
+ public getimage(){
+  return this.image
+  }
+
+  objectKeys(obj:any) {
+    return Object.keys(obj);
+}
+toproductdetails(id:number){
+  this.router.navigateByUrl('/product-details/{id1}')
+}
+
+
 
 
   }/*
@@ -74,9 +94,6 @@ export class HomeComponent implements OnInit {
 
 
     //console.log(this.name)
-
-
-
 
 
 

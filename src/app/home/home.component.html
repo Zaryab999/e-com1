@@ -1,5 +1,5 @@
-<app-header ></app-header>
-<div class="container">
+
+<!-- <div class="container">
     <div class="navbar">
       <div class="logo">
         <a href="index.html"><img src="https://i.ibb.co/kDVwgwp/logo.png" alt="RedStore" width="125px" /></a>
@@ -16,8 +16,11 @@
       <a href="cart.html"><img src="https://i.ibb.co/PNjjx3y/cart.png" alt="" width="30px" height="30px" /></a>
       <img src="https://i.ibb.co/6XbqwjD/menu.png" alt="" class="menu-icon" onclick="menutoggle()" />
     </div>
-  </div>
+  </div> -->
 
+  <!DOCTYPE html>
+<html>
+	<app-header ></app-header>
   <div class="small-container">
     <div class="row row-2">
       <h2>All Products</h2>
@@ -29,10 +32,13 @@
         <option value="">Short by sale</option>
       </select>
     </div>
+
+
     <div class="row">
-      <div class="col-4">
-        <img src="https://i.ibb.co/47Sk9QL/product-1.jpg" alt="" />
-        <h4>Red Printed T-shirt</h4>
+      <div *ngFor="let items of data" class="col-4">
+       <!-- <a (click)="toproductdetails(items.ID)" style="cursor:pointer;"><img src="{{items.Image}}"/> </a> -->
+       <a [routerLink]="['/product-details',items.ID]"><img src="{{items.Image}}"/></a>
+       <h4>{{items.Name}}</h4>
         <div class="rating">
           <i class="fas fa-star"></i>
           <i class="fas fa-star"></i>
@@ -40,10 +46,10 @@
           <i class="fas fa-star"></i>
           <i class="far fa-star"></i>
         </div>
-        <p>₹500.00</p>
+        <p>Rs. {{items.Price}}</p>
       </div>
 
-      <div class="col-4">
+      <!-- <div class="col-4">
         <img src="https://i.ibb.co/b7ZVzYr/product-2.jpg" alt="" />
         <h4>Red Printed T-shirt</h4>
         <div class="rating">
@@ -243,17 +249,17 @@
         </div>
         <p>₹500.00</p>
       </div>
-    </div>
+    </div> -->
 
-    <div class="page-btn">
-      <span>1</span>
-      <span>2</span>
-      <span>3</span>
-      <span>4</span>
-      <span>&#8594;</span>
-    </div>
+
   </div>
-
+  <div class="page-btn" style="display: flex;justify-content: center;">
+    <span>1</span>
+    <span>2</span>
+    <span>3</span>
+    <span>4</span>
+    <span>&#8594;</span>
+  </div>
   <!-- Footer -->
   <div class="footer">
     <div class="container">
@@ -299,6 +305,8 @@
       <p class="copyright">Copyright &copy; 2021 - Red Store</p>
     </div>
   </div>
+  </div>
+  </html>
 
   <!-- js for toggle menu -->
   <script>

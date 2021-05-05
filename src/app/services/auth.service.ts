@@ -47,6 +47,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import {HttpClient, HttpHeaders, HttpParams} from'@angular/common/http';
 import {map} from 'rxjs/operators'
+import { Router } from '@angular/router';
 @Injectable({
      providedIn: 'root'
    })
@@ -55,10 +56,13 @@ export class AuthService  {
   public messageSource = new BehaviorSubject<string>('default message');
   public currentMessage = this.messageSource.getValue();
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient,private router:Router) { }
   name:string=''
   data:any
   code:any
+  ToLogin(){
+    this.router.navigateByUrl('/')
+  }
     login(Email :string,Password:string){
     // this.messageSource.subscribe((data) => {
     //   console.log(data)});
@@ -116,6 +120,14 @@ export class AuthService  {
           )
 
       }
+      loggedin(){
+        return !!localStorage.getItem('login-token')
+      }
+      logoutuser(){
+        localStorage.removeItem('login-token')
+        this.ToLogin()
+      }
+
 
       // up_ver_st(ID:number,vtoken:string) {
       //   console.log("in front end up_vr")

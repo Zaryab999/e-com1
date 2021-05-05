@@ -44,7 +44,7 @@ export class SignupComponent implements OnInit {
 
     this.authservice.signup(this.name,this.password,this.email).subscribe(async (res: any) => {
     this.name=res.Name;
-    alert(`user ${this.name} Registered Sucessfully`)
+    alert(`user ${this.name} Registered Sucessfully Verify your Email`)
     // this.token=res.access_token;
     // var vcode = this.token.substr(1, 10);
     // console.log(vcode)

@@ -17,7 +17,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 import { VerificationComponent } from './verification/verification.component';
 import { ChangepasswordComponent } from './changepassword/changepassword.component';
-
+import { NgImageSliderModule } from 'ng-image-slider';
 
 @NgModule({
   declarations: [
@@ -39,7 +39,8 @@ import { ChangepasswordComponent } from './changepassword/changepassword.compone
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatToolbarModule
+    MatToolbarModule,
+    NgImageSliderModule
   ],
   providers: [],
   bootstrap: [AppComponent]

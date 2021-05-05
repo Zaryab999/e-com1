@@ -29,7 +29,7 @@ import { AuthService } from '../services/auth.service';
   providers:[AuthService]
 })
 export class HeaderComponent implements OnInit {
-
+  constructor(public _authservice:AuthService){}
 
   //currentMessage$.subscribe(val =>console.log("early sub:"+val))
 

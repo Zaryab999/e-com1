@@ -53,15 +53,17 @@ constructor( private authservice: AuthService,private router:Router, private act
       this.authservice.up_changepass(this.newpassowrd,this.Token).subscribe((data)=>{
         alert("Password Updated");
         this.tologin();
-    },(err: any)=>
-    {
-      alert('Password already changed ')
-      this.tologin()
-      console.log('err',err)
-    }
+      },(err: any)=>
+      {
+        alert('Password already changed ')
+        this.tologin()
+        console.log('err',err)
+      }
     );;
 
     }
+    else
+      alert("Plx Enter same passowrds ")
 
   }
 
