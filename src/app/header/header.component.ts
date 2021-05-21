@@ -19,6 +19,7 @@ export class HeaderComponent implements OnInit {
 }
 */
 import { Component, Input ,Output,EventEmitter,OnInit} from '@angular/core';
+import { Router } from '@angular/router';
 import { BehaviorSubject ,Subject} from 'rxjs';
 import { AuthService } from '../services/auth.service';
 
@@ -29,13 +30,19 @@ import { AuthService } from '../services/auth.service';
   providers:[AuthService]
 })
 export class HeaderComponent implements OnInit {
-  constructor(public _authservice:AuthService){}
-
+  constructor(public _authservice:AuthService, private router:Router){}
+  public name:any='Guest'
   //currentMessage$.subscribe(val =>console.log("early sub:"+val))
 
   ngOnInit(){
     //console.log("in ng init header"+this.childMessage)
       //this.change()
+      this.returnname()
+
+
+  }
+  returnname(){
+   return  this.name = localStorage.getItem('Name')
 
 
   }
@@ -43,7 +50,10 @@ export class HeaderComponent implements OnInit {
   @Input() childMessage: string='';
   message:any
 
-
+  tocart()
+  {
+    this.router.navigateByUrl('/cart')
+  }
 
   // public messageSource = new BehaviorSubject<string>("abc");
 

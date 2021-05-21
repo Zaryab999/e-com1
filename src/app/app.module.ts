@@ -18,6 +18,7 @@ import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.compone
 import { VerificationComponent } from './verification/verification.component';
 import { ChangepasswordComponent } from './changepassword/changepassword.component';
 import { NgImageSliderModule } from 'ng-image-slider';
+import { CartComponent } from './cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { NgImageSliderModule } from 'ng-image-slider';
     ForgotpasswordComponent,
     VerificationComponent,
     ChangepasswordComponent,
+    CartComponent,
   ],
   imports: [
     BrowserModule,

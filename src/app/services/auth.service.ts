@@ -48,15 +48,34 @@ import { BehaviorSubject } from 'rxjs';
 import {HttpClient, HttpHeaders, HttpParams} from'@angular/common/http';
 import {map} from 'rxjs/operators'
 import { Router } from '@angular/router';
+import { Storage } from '@ionic/storage';
 @Injectable({
      providedIn: 'root'
    })
 export class AuthService  {
 
-  public messageSource = new BehaviorSubject<string>('default message');
-  public currentMessage = this.messageSource.getValue();
-
+  // public messageSource = new BehaviorSubject<string>('default message');
+  // public currentMessage = this.messageSource.getValue();
+  // public myData: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
   constructor(private http:HttpClient,private router:Router) { }
+
+
+//   load(): void {
+
+//     this.storage.get('myData').then((data) => {
+
+//         this.myData.next(data);
+
+//     });
+
+//   }
+//   updateData(data:any): void {
+
+//     this.storage.set('myData', data);
+//     this.myData.next(data);
+
+// }
+
   name:string=''
   data:any
   code:any
@@ -69,6 +88,8 @@ export class AuthService  {
     return this.http.post<any>('/api/users/login',{Email,Password}).pipe(
            map((data)=>{
             localStorage.setItem('login-token',data.access_token)
+            localStorage.setItem('ID',data.ID)
+            localStorage.setItem('Name',data.Name)
             return data;
           }
           )
@@ -125,6 +146,8 @@ export class AuthService  {
       }
       logoutuser(){
         localStorage.removeItem('login-token')
+        localStorage.removeItem('ID')
+        localStorage.removeItem('Name')
         this.ToLogin()
       }
 
@@ -141,7 +164,7 @@ export class AuthService  {
 
 
   changeMessage(message: string) {
-    this.messageSource.next(message)
+    //this.messageSource.next(message)
    //console.log(this.messageSource.value);
 
   }
@@ -155,7 +178,7 @@ export class AuthService  {
             return  this.name
         }
   getmessage(){
-    return this.messageSource.value
+    //return this.messageSource.value
   }
 
 }

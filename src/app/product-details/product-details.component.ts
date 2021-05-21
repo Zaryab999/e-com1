@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { data } from 'jquery';
 import {ProductService} from 'src/app/services/product.service'
 import { Router, CanActivate } from '@angular/router';
+import { CartService } from '../services/cart.service';
 @Component({
   selector: 'app-product-details',
   templateUrl: './product-details.component.html',
@@ -10,14 +11,18 @@ import { Router, CanActivate } from '@angular/router';
 })
 export class ProductDetailsComponent implements OnInit {
 
-  constructor(private activatedRoute:ActivatedRoute,private productservice:ProductService,private router:Router) { }
+  constructor(private activatedRoute:ActivatedRoute,private productservice:ProductService,private router:Router,private cartservice:CartService) { }
   public ID:number=0
   data:any
   data2:any
   size:any=1
   color:any=1
-  i=0;
+  i=0
   a:string=''
+  lsp:any
+  abc:any
+  ab:any
+  v1:any=[]
 
   ngOnInit(): void {
 
@@ -30,7 +35,7 @@ export class ProductDetailsComponent implements OnInit {
     this.findoneproduct(this.ID)
 
   }
-
+   sizes:any=[];
   COLLECTION: Array<object> = [];
   col:any
 
@@ -74,7 +79,8 @@ export class ProductDetailsComponent implements OnInit {
   {
     this.productservice.product_details(this.ID).subscribe((res)=>{
       this.data=res
-      console.log(this.data);
+      //localStorage.setItem('data',this.data)
+      //console.log(this.data);
       this.color=res[0].Pd_ID
       this.insertDetails();
     },(err:any)=>{
@@ -86,7 +92,7 @@ export class ProductDetailsComponent implements OnInit {
 
   insertDetails()
   {
-    console.log("func call");
+    //console.log("func call");
     //this.COLLECTION=this.COLLECTION.slice(0,this.COLLECTION.length-this.COLLECTION.length)
     this.COLLECTION=[]
     this.data.forEach((x:any) =>
@@ -98,7 +104,7 @@ export class ProductDetailsComponent implements OnInit {
       else
       {}
     });
-    console.log("COLLECTION",this.COLLECTION);
+   //console.log("COLLECTION",this.COLLECTION);
 
   }
 
@@ -115,19 +121,61 @@ export class ProductDetailsComponent implements OnInit {
     }
   SizeChange(event:any){//console.log(event)
     this.size=event.target.value
-    console.log(this.size)
+    //console.log(this.size)
 
   }
   ColorChange(event:any){ //console.log(event)
 
     this.color=event.target.value
-    console.log(this.color)
+    //console.log(this.color)
 
     this.insertDetails()
 
   }
-  addtocart(){
-    alert("item added to cart")
+  addtocart(prodetails:any){
+    //alert("item added to cart")
+    // this.cartservice.addToCart(this.data).subscribe((data)=>
+    // {
+    //   alert(data)
+
+    // },(err: any)=>{
+    //   alert('Error')
+    //   console.log('err',err)
+    // }
+
+    // )
+    // this.v1= localStorage.getItem('products')
+    // this.v1=JSON.parse(this.v1)
+    this.cartservice.addToCart(this.color,this.size).subscribe((data:any)=>{
+
+    console.log(data)
+    //console.log(this.v1)
+
+      if(data==true)
+        alert("product already exist")
+      else
+      alert("item added to cart")
+    },(err: any)=>{
+      alert('Failed')
+      console.log('err',err)
+    });
+    //console.log(this.size)
+
+
+    //this.sizes=localStorage.getItem('size')
+    // this.sizes=JSON.parse(this.sizes)
+
+   // console.log(this.sizes)
+
+    //this.ab=localStorage.getItem('size')
+    //this.ab=JSON.parse(this.ab)
+    //console.log(this.ab[6].size)
+
+    //console.log(prodetails)
+    //this.lsp=this.cartservice.getCartItems()
+    //console.log(this.lsp)
+    //console.log("abc")
+      //console.log(this.data2);
     this.router.navigateByUrl('/home')
   }
   // updateindex(i:any){

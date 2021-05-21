@@ -9,6 +9,7 @@ import  {ForgotpasswordComponent} from './forgotpassword/forgotpassword.componen
 import{VerificationComponent} from './verification/verification.component'
 import{ChangepasswordComponent} from'src/app/changepassword/changepassword.component'
 import {AuthGuardService} from 'src/app/services/auth-guard.service'
+import {CartComponent} from 'src/app/cart/cart.component'
 //import {ProductDetailsComponent} from'src/app/product-details/product-details.component'
   const routes: Routes = [
   { path: '', component: LoginComponent},
@@ -20,6 +21,7 @@ import {AuthGuardService} from 'src/app/services/auth-guard.service'
   {path:'verify/:token/:id',component:VerificationComponent},
   {path:'changepass/:token/:id',component:ChangepasswordComponent},
   {path:'product-details/:id',component:ProductDetailsComponent,canActivate:[AuthGuardService]},
+  {path:'cart',component:CartComponent},
 ];
 
 @NgModule({

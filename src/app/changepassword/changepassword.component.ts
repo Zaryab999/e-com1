@@ -17,19 +17,19 @@ constructor( private authservice: AuthService,private router:Router, private act
 
   ngOnInit(): void {
 
-    $(document).ready(function(){
+    // $(document).ready(function(){
 
-      $('.pass_show').append('<span class="ptxt">Show</span>');
-      });
+    //   $('.pass_show').append('<span class="ptxt">Show</span>');
+    //   });
 
 
-      $(document).on('click','.pass_show .ptxt', function(){
+    //   $(document).on('click','.pass_show .ptxt', function(){
 
-      $(this).text($(this).text() == "Show" ? "Hide" : "Show");
+    //   // $(this).text($(this).text() == "Show" ? "Hide" : "Show");
 
-      $(this).prev().attr('type', function(index, attr){return attr == 'password' ? 'text' : 'password'; });
+    //   // $(this).prev().attr('type', function(index, attr){return attr == 'password' ? 'text' : 'password'; });
 
-      });
+    //   });
 
       const routeParams = this.activatedRoute.snapshot.paramMap;
       this.Token = String(routeParams.get('token'));
@@ -53,17 +53,18 @@ constructor( private authservice: AuthService,private router:Router, private act
       this.authservice.up_changepass(this.newpassowrd,this.Token).subscribe((data)=>{
         alert("Password Updated");
         this.tologin();
-      },(err: any)=>
-      {
-        alert('Password already changed ')
-        this.tologin()
-        console.log('err',err)
-      }
+    },(err: any)=>
+    {
+      alert('Password already changed ')
+      this.tologin()
+      console.log('err',err)
+    }
     );;
 
+    }else
+    {
+      alert("enter same passwords")
     }
-    else
-      alert("Plx Enter same passowrds ")
 
   }
 
