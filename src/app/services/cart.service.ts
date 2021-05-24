@@ -104,24 +104,46 @@ export class CartService {
 
   // }
   addToCart(color:any){
-    this.check=localStorage.getItem('products');
+    //this.check=localStorage.getItem('products');
     console.log(this.check)
     console.log(color)
-    if(this.check==null)
-    {
-      this.check=this.check || [];
-      this.check.push(color);
-      localStorage.setItem('products',this.check)
+      this.check=localStorage.getItem('products');
+      this.check=JSON.parse(this.check)
+      if(this.check==null)
+        
+      {
+      this.check=[];
+      
       console.log(this.check)
+      this.check.push({id:color});
+      localStorage.setItem('products',JSON.stringify(this.check));
+      //console.log(this.check[5].id)
       return this.check;
-    }
-    else
-    {
-      this.check.push(color);
-      localStorage.setItem('products',this.check)
+      }
+      
+      // this.check=localStorage.getItem('products');
+      // console.log(this.check)
+      
+      for(let i=0;i<this.check.length;i++)
+      {
+        if(this.check[i].id==color)
+          this.ispresent=true;
+        
+      }
+      if(this.ispresent==false){  
+      this.check.push({id:color});
       console.log(this.check)
-      return this.check;  
+      localStorage.setItem('products',JSON.stringify(this.check))
+      }
+      else
+      {alert("Item Already Present in CArt");
+    
+      this.ispresent=false
     }
+
+      //console.log(this.check.id)
+      //return this.check;  
+    
       
     //this.check=JSON.parse(this.check)
   //   //console.log(this.check.length)
