@@ -42,9 +42,8 @@ export class HeaderComponent implements OnInit {
 
   }
   returnname(){
-   return  this.name = localStorage.getItem('Name')
-
-
+    this.name=localStorage.getItem('Name')
+    console.log(this.name );
   }
 
   @Input() childMessage: string='';

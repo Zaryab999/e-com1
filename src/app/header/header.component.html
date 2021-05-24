@@ -1,6 +1,6 @@
  <mat-toolbar color="primary">
     <mat-toolbar-row>
-      <h3>User : {{name}}</h3>
+      <!-- <h3>User : {{name}}</h3> -->
       <span class="example-spacer"></span>
       <a *ngIf="!_authservice.loggedin()" routerLink="/login" style="padding-right: 10px;">Login </a>
       <a *ngIf="!_authservice.loggedin()" routerLink="sign-up"style="padding-right: 10px;"> Register  </a>

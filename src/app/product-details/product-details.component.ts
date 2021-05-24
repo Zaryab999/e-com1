@@ -17,6 +17,7 @@ export class ProductDetailsComponent implements OnInit {
   data2:any
   size:any=1
   color:any=1
+  Pd_ID:any
   i=0
   a:string=''
   lsp:any
@@ -80,8 +81,9 @@ export class ProductDetailsComponent implements OnInit {
     this.productservice.product_details(this.ID).subscribe((res)=>{
       this.data=res
       //localStorage.setItem('data',this.data)
-      //console.log(this.data);
+      console.log(this.data);
       this.color=res[0].Pd_ID
+      console.log(this.color);
       this.insertDetails();
     },(err:any)=>{
       alert('Error')
@@ -120,19 +122,22 @@ export class ProductDetailsComponent implements OnInit {
 
     }
   SizeChange(event:any){//console.log(event)
-    this.size=event.target.value
+    this.size=event.target.value.Feature_Value
     //console.log(this.size)
 
   }
   ColorChange(event:any){ //console.log(event)
-
+    
     this.color=event.target.value
-    //console.log(this.color)
-
+    
+    //this.Pd_ID=event.target.value.Pd_ID
+    //console.log(this.Pd_ID)
     this.insertDetails()
 
   }
-  addtocart(prodetails:any){
+  
+
+  addtocart(){
     //alert("item added to cart")
     // this.cartservice.addToCart(this.data).subscribe((data)=>
     // {
@@ -146,19 +151,22 @@ export class ProductDetailsComponent implements OnInit {
     // )
     // this.v1= localStorage.getItem('products')
     // this.v1=JSON.parse(this.v1)
-    this.cartservice.addToCart(this.color,this.size).subscribe((data:any)=>{
+     this.cartservice.addToCart(this.color)
+  //    .subscribe((data:any)=>{
+  //   console.log(data)
+  // }
+  // )
+    // console.log(data)
+    // //console.log(this.v1)
 
-    console.log(data)
-    //console.log(this.v1)
-
-      if(data==true)
-        alert("product already exist")
-      else
-      alert("item added to cart")
-    },(err: any)=>{
-      alert('Failed')
-      console.log('err',err)
-    });
+    //   if(data==true)
+    //     alert("product already exist")
+    //   else
+    //   alert("item added to cart")
+    // },(err: any)=>{
+    //   alert('Failed')
+    //   console.log('err',err)
+    // });
     //console.log(this.size)
 
 
@@ -176,7 +184,7 @@ export class ProductDetailsComponent implements OnInit {
     //console.log(this.lsp)
     //console.log("abc")
       //console.log(this.data2);
-    this.router.navigateByUrl('/home')
+    //this.router.navigateByUrl('/home')
   }
   // updateindex(i:any){
   //   console.log(i)

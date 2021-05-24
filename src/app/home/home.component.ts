@@ -43,6 +43,7 @@ export class HomeComponent implements OnInit {
       this.data=res
       var c= res.length;
       console.log(this.data)
+      //console.log(this.data[0].ID)
       //console.log(this.data)
 
      // this.image=data.Image
