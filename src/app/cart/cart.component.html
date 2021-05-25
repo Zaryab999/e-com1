@@ -23,12 +23,26 @@
       </tr>
   </tbody>
 </table> -->
-
-  <div *ngFor="let item of products">
-  <h1>{{item.Pd_ID}}</h1>
-  <!-- <h1>abcd</h1> -->
-  </div>
-
+  
+  <ng-container *ngFor="let item of cartproduct_detais; let i=index">
+   <h1> Product No:{{i+1}}</h1>
+   <h2>Name:{{products[i].Pro_Name}}</h2>
+    <ng-container *ngFor="let item1 of item " >
+     <ng-container *ngIf="item1.F_ID == 1" >
+        <h3>Size:{{item1.Feature_Value}}</h3>
+      </ng-container>
+      <ng-container *ngIf="item1.F_ID == 2" count++>
+        <h3>Color:{{item1.Feature_Value }}</h3>
+      </ng-container>
+      <ng-container *ngIf="item1.F_ID == 3" count++>
+        <h3>Fabric:{{item1.Feature_Value}}</h3>
+      </ng-container>
+      <ng-container *ngIf="item1.F_ID == 5" count++>
+        <h3>Waste:{{item1.Feature_Value}}</h3>
+      </ng-container>
+    </ng-container>
+  </ng-container>
+  
 
   <!-- https://www.triads.co.uk/images/products/medium/1553179923-85769400.jpg -->
 

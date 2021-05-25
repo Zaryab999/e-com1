@@ -30,14 +30,22 @@ import { AuthService } from '../services/auth.service';
   providers:[AuthService]
 })
 export class HeaderComponent implements OnInit {
-  constructor(public _authservice:AuthService, private router:Router){}
-  public name:any='Guest'
+  public name:any=''
+  constructor(public _authservice:AuthService, private router:Router){
+    // this._authservice.SharingData.subscribe((res:any)=>{
+    //   console.log(res)
+    //   this.name=res
+    // })
+
+  }
+  
   //currentMessage$.subscribe(val =>console.log("early sub:"+val))
 
   ngOnInit(){
     //console.log("in ng init header"+this.childMessage)
       //this.change()
       this.returnname()
+      //window.location.reload
 
 
   }
@@ -45,6 +53,7 @@ export class HeaderComponent implements OnInit {
     this.name=localStorage.getItem('Name')
     console.log(this.name );
   }
+  
 
   @Input() childMessage: string='';
   message:any

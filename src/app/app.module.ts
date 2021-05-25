@@ -7,7 +7,7 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { HomeComponent } from './home/home.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
-import { OrderComponent } from './order/order.component';
+
 import { AdminScreenComponent } from './admin-screen/admin-screen.component';
 import { HeaderComponent } from './header/header.component';
 import { FormsModule } from '@angular/forms';
@@ -27,7 +27,6 @@ import { CartComponent } from './cart/cart.component';
     SignupComponent,
     HomeComponent,
     ProductDetailsComponent,
-    OrderComponent,
     AdminScreenComponent,
     HeaderComponent,
     ForgotpasswordComponent,

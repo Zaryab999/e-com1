@@ -46,6 +46,8 @@ export  class LoginComponent implements OnInit, OnDestroy {
   //subject = new BehaviorSubject(123);
 
   ngOnInit(): void {
+    localStorage.setItem('Name',"Guest")
+    //window.location.reload()
     //this.subscription = this.authservice.currentMessage;
     //this.newMessage()
     /*this.getDetails();
@@ -77,8 +79,10 @@ export  class LoginComponent implements OnInit, OnDestroy {
   signUp(){
     this.router.navigateByUrl('/sign-up')
   }
-  ToHome(){
-    this.router.navigateByUrl('/home')
+  ToHome(name:any){
+    this.router.navigateByUrl(`/home/${name}`)
+    //this.router.navigateByUrl('/header')
+    
   }
   onClickSubmit(data:any){
     console.log(data);
@@ -111,7 +115,9 @@ export  class LoginComponent implements OnInit, OnDestroy {
     //this.authservice.setdata(this.name)
     //this.parentMessage = this.name
     alert(`Welcome ${this.name}`)
-    this.ToHome();
+    
+    this.ToHome(this.name);
+    //window.location.reload()
     },(err: any)=>{
       alert('invali Email or Password')
       console.log('err',err)

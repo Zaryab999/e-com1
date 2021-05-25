@@ -103,7 +103,7 @@ export class CartService {
   //   return this.ordered_product_id
 
   // }
-  addToCart(color:any){
+  addToCart(color:any,Name:any){
     //this.check=localStorage.getItem('products');
     console.log(this.check)
     console.log(color)
@@ -115,7 +115,7 @@ export class CartService {
       this.check=[];
       
       console.log(this.check)
-      this.check.push({id:color});
+      this.check.push({U_Pd_ID:color,Pro_Name:Name});
       localStorage.setItem('products',JSON.stringify(this.check));
       //console.log(this.check[5].id)
       return this.check;
@@ -126,14 +126,17 @@ export class CartService {
       
       for(let i=0;i<this.check.length;i++)
       {
-        if(this.check[i].id==color)
+        if(this.check[i].U_Pd_ID==color)
           this.ispresent=true;
         
       }
       if(this.ispresent==false){  
-      this.check.push({id:color});
+      this.check.push({U_Pd_ID:color,Pro_Name:Name});
       console.log(this.check)
       localStorage.setItem('products',JSON.stringify(this.check))
+      alert("Product Added in CArt");
+    
+      
       }
       else
       {alert("Item Already Present in CArt");
@@ -178,10 +181,10 @@ export class CartService {
   //   }
 
   }
-  getorderedproduct_id(color:any,size:any){
-    console.log(color,size)
-    return this.http.get(`/api/products/unique/${color}/${size}`).pipe(map((data)=>{
-      console.log(data)
+  getorderedproduct_details(Pd_ID:any){
+    //console.log(color,size)
+    return this.http.get(`/api/products/specdetails/${Pd_ID}`).pipe(map((data)=>{
+     //console.log(data)
       return data;
 
     })

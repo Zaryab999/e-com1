@@ -80,6 +80,7 @@ export class ProductDetailsComponent implements OnInit {
   {
     this.productservice.product_details(this.ID).subscribe((res)=>{
       this.data=res
+     
       //localStorage.setItem('data',this.data)
       console.log(this.data);
       this.color=res[0].Pd_ID
@@ -151,7 +152,7 @@ export class ProductDetailsComponent implements OnInit {
     // )
     // this.v1= localStorage.getItem('products')
     // this.v1=JSON.parse(this.v1)
-     this.cartservice.addToCart(this.color)
+     this.cartservice.addToCart(this.color,this.data[0].Name)
   //    .subscribe((data:any)=>{
   //   console.log(data)
   // }

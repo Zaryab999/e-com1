@@ -15,15 +15,16 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
   name:any='';
-  constructor(  private productservice: ProductService,private router:Router,) { }
+  constructor(  private productservice: ProductService,private router:Router,activatedRoute:ActivatedRoute) { }
   message:string='';
   image:string='';
   data:any=[];
+  count:any=1
   //subscription: Subscription = new Subscription;
 
   ngOnInit(): void {
     //  this.alert()
-
+    
     //  this.authservice.subject.subscribe(res => {
     //   console.log('res',res)
     //   this.name = res
@@ -37,9 +38,11 @@ export class HomeComponent implements OnInit {
     //console.log(this.authservice.currentMessage)
     // const a=this.authservice.messageSource.value
     // console.log(a)
-
+    // if(localStorage.getItem('Name')!="Guest")
+      // window.location.reload()
     this.productservice.getallproducts().subscribe(async(res:any)=>
     {
+      
       this.data=res
       var c= res.length;
       console.log(this.data)
@@ -54,6 +57,7 @@ export class HomeComponent implements OnInit {
     )
 
   }
+  
  public getimage(){
   return this.image
   }

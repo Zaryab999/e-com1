@@ -15,7 +15,7 @@ import {CartComponent} from 'src/app/cart/cart.component'
   { path: '', component: LoginComponent},
   { path: 'sign-up', component: SignupComponent},
   // { path: 'product-detail', component: ProductDetailsComponent},
-  { path: 'home', component: HomeComponent,canActivate:[AuthGuardService]},
+  { path: 'home/:name', component: HomeComponent,canActivate:[AuthGuardService]},
   {path:'header',component:HeaderComponent},
   {path:'forgot',component:ForgotpasswordComponent},
   {path:'verify/:token/:id',component:VerificationComponent},

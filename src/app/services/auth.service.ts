@@ -44,11 +44,12 @@
 
 // }
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject,Subject } from 'rxjs';
 import {HttpClient, HttpHeaders, HttpParams} from'@angular/common/http';
 import {map} from 'rxjs/operators'
 import { Router } from '@angular/router';
 import { Storage } from '@ionic/storage';
+
 @Injectable({
      providedIn: 'root'
    })
@@ -57,6 +58,7 @@ export class AuthService  {
   // public messageSource = new BehaviorSubject<string>('default message');
   // public currentMessage = this.messageSource.getValue();
   // public myData: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
+  SharingData = new Subject();  
   constructor(private http:HttpClient,private router:Router) { }
 
 
@@ -81,6 +83,7 @@ export class AuthService  {
   code:any
   ToLogin(){
     this.router.navigateByUrl('/')
+   // window.location.reload()
   }
     login(Email :string,Password:string){
     // this.messageSource.subscribe((data) => {
@@ -90,6 +93,7 @@ export class AuthService  {
             localStorage.setItem('login-token',data.access_token)
             localStorage.setItem('ID',data.ID)
             localStorage.setItem('Name',data.Name)
+            this.SharingData.next(data.name)
             return data;
           }
           )
@@ -148,6 +152,8 @@ export class AuthService  {
         localStorage.removeItem('login-token')
         localStorage.removeItem('ID')
         localStorage.removeItem('Name')
+        localStorage.removeItem('products')
+        
         this.ToLogin()
       }
 

@@ -24,7 +24,7 @@ export class ProductService {
 
       }
       findoneproduct(ID:number){
-        console.log(ID)
+       // console.log(ID)
         return this.http.get<any>(`/api/products/${ID}`).pipe(
           map((data)=>{
             return data;
@@ -40,6 +40,7 @@ export class ProductService {
         )
 
       }
+
 
 
 }
