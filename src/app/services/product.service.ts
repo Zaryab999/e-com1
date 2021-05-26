@@ -40,6 +40,15 @@ export class ProductService {
         )
 
       }
+      Getsizes(Pd_ID:any){
+        return this.http.get<any>(`/api/products/getsizes/${Pd_ID}`).pipe(
+          map((data)=>{
+            //console.log(data)
+            return data
+          })
+        )
+
+      }
 
 
 

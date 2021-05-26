@@ -59,8 +59,8 @@
           <select (change)="SizeChange($event)">
             <option>Select Size</option>
             <ng-container *ngFor="let item of data";>
-              <ng-container *ngIf="item.F_ID==1 && item.Pd_ID==color">
-                <option [value]="item">{{item.Feature_Value}}</option>
+              <ng-container *ngIf="item.Pd_ID==color && item.F_ID==1">
+                <option [value]="item.Feature_Value">{{item.Feature_Value}}</option>
               </ng-container>
             </ng-container>
           </select>

@@ -103,7 +103,7 @@ export class CartService {
   //   return this.ordered_product_id
 
   // }
-  addToCart(color:any,Name:any){
+  addToCart(color:any,Name:any,size:any){
     //this.check=localStorage.getItem('products');
     console.log(this.check)
     console.log(color)
@@ -115,8 +115,9 @@ export class CartService {
       this.check=[];
       
       console.log(this.check)
-      this.check.push({U_Pd_ID:color,Pro_Name:Name});
+      this.check.push({U_Pd_ID:color,Pro_Name:Name,Size:size});
       localStorage.setItem('products',JSON.stringify(this.check));
+      alert("Product Added in CArt");
       //console.log(this.check[5].id)
       return this.check;
       }
@@ -126,12 +127,12 @@ export class CartService {
       
       for(let i=0;i<this.check.length;i++)
       {
-        if(this.check[i].U_Pd_ID==color)
+        if(this.check[i].U_Pd_ID==color && this.check[i].Size==size)
           this.ispresent=true;
         
       }
       if(this.ispresent==false){  
-      this.check.push({U_Pd_ID:color,Pro_Name:Name});
+      this.check.push({U_Pd_ID:color,Pro_Name:Name,Size:size});
       console.log(this.check)
       localStorage.setItem('products',JSON.stringify(this.check))
       alert("Product Added in CArt");

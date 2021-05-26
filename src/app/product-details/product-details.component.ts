@@ -15,7 +15,8 @@ export class ProductDetailsComponent implements OnInit {
   public ID:number=0
   data:any
   data2:any
-  size:any=1
+  size:any
+  sizes_of_selec_product:any
   color:any=1
   Pd_ID:any
   i=0
@@ -123,17 +124,32 @@ export class ProductDetailsComponent implements OnInit {
 
     }
   SizeChange(event:any){//console.log(event)
-    this.size=event.target.value.Feature_Value
-    //console.log(this.size)
+    this.size=event.target.value
+    console.log(this.size)
 
   }
   ColorChange(event:any){ //console.log(event)
     
     this.color=event.target.value
-    
+    //console.log(this.color)
+    //this.getsizes(this.color)
     //this.Pd_ID=event.target.value.Pd_ID
     //console.log(this.Pd_ID)
     this.insertDetails()
+
+  }
+  getsizes(Pd_ID:any){
+    this.productservice.Getsizes(Pd_ID).subscribe((data)=>
+    {
+      //console.log(data)
+      this.sizes_of_selec_product=data
+      console.log(this.sizes_of_selec_product)
+      //console.log(this.data2);
+    },(err: any)=>{
+      alert('Error')
+      console.log('err',err)
+    });
+    
 
   }
   
@@ -152,7 +168,8 @@ export class ProductDetailsComponent implements OnInit {
     // )
     // this.v1= localStorage.getItem('products')
     // this.v1=JSON.parse(this.v1)
-     this.cartservice.addToCart(this.color,this.data[0].Name)
+    console.log(this.size)
+     this.cartservice.addToCart(this.color,this.data[0].Name,this.size)
   //    .subscribe((data:any)=>{
   //   console.log(data)
   // }
