@@ -7,6 +7,8 @@ import {OnDestroy } from '@angular/core';
 import {HeaderComponent} from 'src/app/header/header.component'
 import { ProductService } from '../services/product.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import {  EventEmitter, Output  } from '@angular/core';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -21,6 +23,7 @@ export class HomeComponent implements OnInit {
   data:any=[];
   count:any=1
   //subscription: Subscription = new Subscription;
+
 
   ngOnInit(): void {
     //  this.alert()

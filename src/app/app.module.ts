@@ -19,6 +19,8 @@ import { VerificationComponent } from './verification/verification.component';
 import { ChangepasswordComponent } from './changepassword/changepassword.component';
 import { NgImageSliderModule } from 'ng-image-slider';
 import { CartComponent } from './cart/cart.component';
+import {MatListModule} from '@angular/material/list';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,9 @@ import { CartComponent } from './cart/cart.component';
     HttpClientModule,
     BrowserAnimationsModule,
     MatToolbarModule,
-    NgImageSliderModule
+    NgImageSliderModule,
+    MatListModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

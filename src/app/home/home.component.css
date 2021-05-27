@@ -279,6 +279,10 @@
     width: 180px;
     margin-bottom: 20px;
   }
+  .sidenav-list span {
+    padding-left: 8px;
+  }
+  
   
   .footer-col-3,
   .footer-col-4 {
